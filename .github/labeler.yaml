@@ -1,0 +1,15 @@
+name: "Labeler"
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Label PRs and Issues"
+        uses: actions/labeler@v4
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
